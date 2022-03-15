@@ -1,0 +1,9 @@
+.todo-container {
+    background-color: #9dd3f3;
+    margin: 8px 0;
+    padding: 15px 20px;
+    display: flex;
+    border-radius: 5px;
+    justify-content: space-between;
+    align-items: center;
+}

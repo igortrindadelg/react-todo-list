@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
+import {v4 as uuidv4} from 'uuid'
+
 import Todos from './components/Todos'
+import Header from './components/Header'
 import './App.css'
 import AddTodo from './components/AddTodo'
 
 const App = () => {
-  const [todos, doneTodos] = useState([
+  const [todos, setTodos] = useState([
     {
       id: '1',
       title: 'Estudar react.js',
@@ -13,7 +16,7 @@ const App = () => {
     {
       id: '2',
       title: 'Estudar Blockchain',
-      done: false
+      done: true
     },
     {
       id: '3',
@@ -22,11 +25,44 @@ const App = () => {
     }
   ])
 
+  const handleTodoClick = (todoId) => {
+    const newTodos = todos.map(todo => {
+      if (todo.id == todoId) return {
+        ...todo,
+        done: !todo.done
+      }
+
+      return todo
+    })
+
+    setTodos(newTodos)
+  }
+
+
+  const handleTodoAdd = (todoTitle) => {
+    const newTodos = [
+      ...todos, 
+      {
+        title: todoTitle,
+        id: uuidv4(),
+        done: false
+    }]
+
+    setTodos(newTodos)
+  }
+
+  const handleTodoDelete = (todoId) => {
+    const newTodos = todos.filter(todo => todo.id != todoId)
+    
+    setTodos(newTodos)
+  }
+
   return (
     <>
       <div className='container'>
-        <AddTodo />
-        <Todos todos={todos} />
+        <Header />
+        <AddTodo handleTodoAdd={handleTodoAdd} />
+        <Todos todos={todos} handleTodoClick={handleTodoClick} handleTodoDelete={handleTodoDelete} />
       </div>
     </>
   )

@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from './Button'
 import './AddTodo.css'
 
-const AddTodo = () => {
+const AddTodo = ({ handleTodoAdd }) => {
+    const [inputData, setInputData] = useState('')
+
+    const handleInputChange = (e) => {
+        setInputData(e.target.value)
+    }
+
+    const handleAddTodoClick = () => {
+        handleTodoAdd(inputData)
+        setInputData('')
+    }
+
     return ( 
         <div className='add-todo-container'>
-            <input type="text" className='add-todo-input' placeholder='Add New Todo' />
+            <input value={inputData} onChange={handleInputChange} type="text" className='add-todo-input' />
             <div className="button-container">
-                <Button>Adicionar</Button>
+                <Button onClick={handleAddTodoClick}>Adicionar</Button>
             </div>
         </div>
      )

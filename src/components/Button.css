@@ -9,9 +9,10 @@
     font-size: 16px;
     font-weight: bold;
     color: white;
-    animation: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .button:hover {
-    background-color: #184c88;
+    background-color: #9fc8f8;
+    color: #184c88;
 }

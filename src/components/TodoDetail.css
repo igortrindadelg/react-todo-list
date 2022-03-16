@@ -1,0 +1,19 @@
+.todo-details-container {
+    background-color: #74a5dd85;
+    margin: 10px 0;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+.todo-details-container h2 {
+    margin-bottom: 10px;
+    color: #184c88;
+}
+
+.back-button-container {
+    cursor: pointer;
+    max-width: 30%;
+    margin-top: 20px;
+}

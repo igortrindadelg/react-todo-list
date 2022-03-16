@@ -1,8 +1,16 @@
 import React from 'react'
-import './Todo.css'
 import { CgClose, CgInfo } from 'react-icons/cg'
+import { useHistory } from 'react-router-dom'
+
+import './Todo.css'
 
 const Todo = ({ todo, handleTodoClick, handleTodoDelete }) => {
+    const history = useHistory()
+
+    const handleTodoDetailClick = () => {
+        history.push(`/${todo.title}`)
+    }
+
     return (
         <div className="todo-container" 
         style={ todo.done ? { borderLeft: '6px solid #32CD32', textDecoration: 'line-through'} : {} }>
@@ -12,8 +20,8 @@ const Todo = ({ todo, handleTodoClick, handleTodoDelete }) => {
             </div>
 
             <div className="buttons-container">
+                <button className="info-todo" onClick={handleTodoDetailClick} ><CgInfo /></button>
                 <button className='delete-todo' onClick={ () => handleTodoDelete(todo.id)}><CgClose /></button>
-                <button className="info-todo"><CgInfo /></button>
             </div>
         </div>
     )

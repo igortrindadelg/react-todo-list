@@ -5,7 +5,12 @@ import Todo from './Todo'
 const Todos = ({ todos, handleTodoClick, handleTodoDelete }) => {
     return (
         <>
-             { todos.map( (todo) => (<Todo todo={todo} handleTodoClick={handleTodoClick} handleTodoDelete={handleTodoDelete} />) )}
+             { todos.map( (todo) => (
+             <Todo 
+             key={todo.id}
+             todo={todo} 
+             handleTodoClick={handleTodoClick} 
+             handleTodoDelete={handleTodoDelete} />) )}
         </>
     ) 
 }
